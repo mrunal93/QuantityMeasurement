@@ -15,7 +15,12 @@ namespace QuantityMeasurement
 
         public override bool Equals(object obj)
         {
-            return obj is LengthCompare value && this.value == value.value;
+            if (this == obj)
+                return true;
+            if (obj == null)
+                return false;
+            LengthCompare feet = (LengthCompare)obj;
+            return value.CompareTo(feet.value) == 0;
         }
     }
 }
