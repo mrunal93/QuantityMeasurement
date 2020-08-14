@@ -20,5 +20,14 @@ namespace NUnitTestQuantityMeasurement
             LengthCompare lengthTwo = new LengthCompare(1.0);
             Assert.AreNotEqual(lengthOne, lengthTwo);
         }
+
+        [Test]
+        public void GivenTwoObjects_ThenCheckReference_ShouldReturnFalse()
+        {
+            LengthCompare lengthOne = new LengthCompare(0.0);
+            LengthCompare lengthTwo = new LengthCompare(0.0);
+            bool toReturn = System.Object.ReferenceEquals(lengthOne, lengthTwo);
+            Assert.IsFalse(toReturn);
+        }
     }
 }
