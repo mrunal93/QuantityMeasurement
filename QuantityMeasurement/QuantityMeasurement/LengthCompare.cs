@@ -17,7 +17,7 @@ namespace QuantityMeasurement
         {
             if (this == obj)
                 return true;
-            if (obj == null)
+            if (obj == null || !this.GetType().Equals(obj.GetType()))
                 return false;
             LengthCompare feet = (LengthCompare)obj;
             return value.CompareTo(feet.value) == 0;
