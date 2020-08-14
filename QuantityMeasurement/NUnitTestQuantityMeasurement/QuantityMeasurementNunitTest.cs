@@ -29,5 +29,13 @@ namespace NUnitTestQuantityMeasurement
             bool toReturn = System.Object.ReferenceEquals(lengthOne, lengthTwo);
             Assert.IsFalse(toReturn);
         }
+
+        [Test]
+        public void GivenTwoObjectWithDifferentvale_Thencheckedtype_ShouldReturnEquals()
+        {
+            LengthCompare lengthOne = new LengthCompare(0.0);
+            LengthCompare lengthTwo = new LengthCompare(0.0);
+            Assert.AreEqual(lengthOne.GetType(), lengthTwo.GetType());
+        }
     }
 }
