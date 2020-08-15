@@ -10,8 +10,7 @@ namespace QuantityMeasurement
 
         private Unit unit;
         private double value;
-        private double FeetToInch = 12.0;
-        private double InchToFeet = 1/12.0;
+        private double CONVERTER_INCH_FEET = 12.0;
 
         public LengthCompare(Unit unit,double value)
         {
@@ -27,13 +26,23 @@ namespace QuantityMeasurement
             }
             if (this.unit.Equals(Unit.FEET) && inchValue.unit.Equals(Unit.INCH))
             {
-                return inchValue.value.CompareTo(this.value * FeetToInch) == 0;
+                return inchValue.value.CompareTo(this.value * CONVERTER_INCH_FEET) == 0;
             }
             if (this.unit.Equals(Unit.INCH) && inchValue.unit.Equals(Unit.FEET))
             {
-                return inchValue.value.CompareTo(this.value / InchToFeet) == 0;
+                return inchValue.value.CompareTo(this.value / CONVERTER_INCH_FEET) == 0;
             }
             return false;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (this == obj)
+                return true;
+            if (obj == null || !this.GetType().Equals(obj.GetType()))
+                return false;
+            LengthCompare length = (LengthCompare)obj;
+            return value.CompareTo(length.value) == 0 & unit == length.unit;
         }
     }
 }

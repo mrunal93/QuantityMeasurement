@@ -6,6 +6,14 @@ namespace NUnitTestQuantityMeasurement
     public class QuantityMeasurementNunitTest
     {
         [Test]
+        public void GivenZeroFeetToZeroFeet_ThenCompareQuantity_ShouldReturnEquals()
+        {
+            LengthCompare lengthOne = new LengthCompare(LengthCompare.Unit.FEET, 0.0);
+            LengthCompare lengthTwo = new LengthCompare(LengthCompare.Unit.FEET, 0.0);
+            Assert.AreEqual(lengthOne, lengthTwo);
+        }
+
+        [Test]
         public void GivenZeroFeetToNull_ThenCompareQuantity_ShouldReturnNotEquals()
         {
             LengthCompare lengthOne = new LengthCompare(LengthCompare.Unit.FEET, 0.0);
@@ -36,6 +44,14 @@ namespace NUnitTestQuantityMeasurement
             LengthCompare lengthOne = new LengthCompare(LengthCompare.Unit.FEET, 0.0);
             LengthCompare lengthTwo = new LengthCompare(LengthCompare.Unit.FEET, 5.0);
             Assert.AreNotEqual(lengthOne, lengthTwo);
+        }
+
+        [Test]
+        public void GivenZeroLengthCompareAndZeroLengthCompare_thenCompareQuantity_ShouldReturnEquals()
+        {
+            LengthCompare LengthOne = new LengthCompare(LengthCompare.Unit.INCH, 0.0);
+            LengthCompare LengthCompareTwo = new LengthCompare(LengthCompare.Unit.INCH, 0.0);
+            Assert.AreEqual(LengthOne, LengthCompareTwo);
         }
 
         [Test]
@@ -110,10 +126,21 @@ namespace NUnitTestQuantityMeasurement
         [Test]
         public void GivenTwelveFeetAndOneInch_ThenCompareQuantity_ShouldReturnTrue()
         {
-            LengthCompare lengthOne = new LengthCompare(LengthCompare.Unit.FEET, 12.0);
-            LengthCompare lengthTwo = new LengthCompare(LengthCompare.Unit.INCH, 1.0);
+            LengthCompare lengthOne = new LengthCompare(LengthCompare.Unit.FEET, 1.0);
+            LengthCompare lengthTwo = new LengthCompare(LengthCompare.Unit.INCH, 12.0);
             bool compareCheck = lengthTwo.Compare(lengthOne);
             Assert.IsTrue(compareCheck);
         }
+
+        [Test]
+        public void GivenOneFeetAndOneFeet_ThenCompareQuantity_ShouldReturnTrue()
+        {
+            LengthCompare lengthOne = new LengthCompare(LengthCompare.Unit.FEET, 1.0);
+            LengthCompare lengthTwo = new LengthCompare(LengthCompare.Unit.FEET, 1.0);
+            bool compareCheck = lengthTwo.Compare(lengthOne);
+            Assert.IsTrue(compareCheck);
+        }
+
+
     }
 }
