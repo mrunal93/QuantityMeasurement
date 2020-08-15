@@ -6,10 +6,14 @@ namespace QuantityMeasurement
 {
     public class LengthCompare
     {
+        public enum Unit { FEET,INCH}
+
+        public Unit unit;
         public double value;
 
-        public LengthCompare(double value)
+        public LengthCompare(Unit unit,double value)
         {
+            this.unit = unit;
             this.value = value;
         }
 
@@ -19,8 +23,8 @@ namespace QuantityMeasurement
                 return true;
             if (obj == null || !this.GetType().Equals(obj.GetType()))
                 return false;
-            LengthCompare feet = (LengthCompare)obj;
-            return value.CompareTo(feet.value) == 0;
+            LengthCompare length = (LengthCompare)obj;
+            return value.CompareTo(length.value) == 0 & unit == length.unit;
         }
     }
 }
