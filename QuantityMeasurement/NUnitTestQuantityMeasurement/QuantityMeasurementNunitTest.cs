@@ -79,5 +79,13 @@ namespace NUnitTestQuantityMeasurement
             bool toReturn = System.Object.ReferenceEquals(inchOne, inchTwo);
             Assert.IsTrue(toReturn);
         }
+
+        [Test]
+        public void GivenTwoObjectWithDifferentvaleForInch_Thencheckedtype_ShouldReturnEquals()
+        {
+            Inch lengthOne = new Inch(0.0);
+            Inch lengthTwo = new Inch(7.0);
+            Assert.AreEqual(lengthOne.GetType(), lengthTwo.GetType());
+        }
     }
 }
