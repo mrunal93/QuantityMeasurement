@@ -90,7 +90,7 @@ namespace NUnitTestQuantityMeasurement
         }
 
         [Test]
-        public void GivenOneInchAndOneFeet_ThenCompareQuantity_ShouldNotReturnTrue()
+        public void GivenOneInchAndOneFeet_ThenCompareQuantity_ShouldNotReturnFalse()
         {
             LengthCompare lengthOne = new LengthCompare(LengthCompare.Unit.FEET, 1.0);
             LengthCompare lengthTwo = new LengthCompare(LengthCompare.Unit.INCH, 1.0);
@@ -102,9 +102,9 @@ namespace NUnitTestQuantityMeasurement
         public void GivenOneFeetAndOneInch_ThenCompareQuantity_ShouldNotReturnTrue()
         {
             LengthCompare lengthOne = new LengthCompare(LengthCompare.Unit.FEET, 1.0);
-            LengthCompare lengthTwo = new LengthCompare(LengthCompare.Unit.INCH, 1.0);
-            bool compareCheck = lengthTwo.Compare(lengthOne);
-            Assert.IsFalse(compareCheck);
+            LengthCompare lengthTwo = new LengthCompare(LengthCompare.Unit.INCH, 12.0);
+            bool compareCheck = lengthOne.Compare(lengthTwo);
+            Assert.IsTrue(compareCheck);
         }
     }
 }
