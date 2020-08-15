@@ -17,7 +17,7 @@ namespace NUnitTestQuantityMeasurement
         public void GivenZeroFeetToNull_ThenCompareQuantity_ShouldReturnNotEquals()
         {
             LengthCompare lengthOne = new LengthCompare(0.0);
-            LengthCompare lengthTwo = new LengthCompare(1.0);
+            LengthCompare lengthTwo = null;
             Assert.AreNotEqual(lengthOne, lengthTwo);
         }
 
@@ -54,6 +54,14 @@ namespace NUnitTestQuantityMeasurement
             Assert.AreEqual(inchOne, inchTwo);
         }
 
-       
+        [Test]
+        public void GivenZeroInchAndNullInch_thenCompareQuantity_ShouldReturnNotEquals()
+        {
+            Inch inchOne = new Inch(0.0);
+            Inch inchTwo = null;
+            Assert.AreNotEqual(inchOne, inchTwo);
+        }
+
+        
     }
 }
