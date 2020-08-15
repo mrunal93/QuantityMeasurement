@@ -8,13 +8,31 @@ namespace QuantityMeasurement
     {
         public enum Unit { FEET,INCH}
 
-        public Unit unit;
-        public double value;
+        private Unit unit;
+        private double value;
+        private double CONVERTER_INCH_FEET = 12.0;
 
         public LengthCompare(Unit unit,double value)
         {
             this.unit = unit;
             this.value = value;
+        }
+
+        public  bool Compare(LengthCompare inchValue)
+        {
+            if (this.unit.Equals(inchValue.unit))
+            {
+                return this.Equals(inchValue);
+            }
+            if (this.unit.Equals(Unit.FEET) && inchValue.unit.Equals(Unit.INCH))
+            {
+                return inchValue.value.CompareTo(this.value * CONVERTER_INCH_FEET) == 0;
+            }
+            if (this.unit.Equals(Unit.INCH) && inchValue.unit.Equals(Unit.FEET))
+            {
+                return inchValue.value.CompareTo(this.value / CONVERTER_INCH_FEET) == 0;
+            }
+            return false;
         }
 
         public override bool Equals(object obj)
