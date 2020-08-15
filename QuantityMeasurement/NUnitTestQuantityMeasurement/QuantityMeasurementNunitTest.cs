@@ -141,6 +141,13 @@ namespace NUnitTestQuantityMeasurement
             Assert.IsTrue(compareCheck);
         }
 
-
+        [Test]
+        public void GivenOneInchAndOneInch_ThenCompareQuantity_ShouldReturnTrue()
+        {
+            LengthCompare lengthOne = new LengthCompare(LengthCompare.Unit.INCH, 1.0);
+            LengthCompare lengthTwo = new LengthCompare(LengthCompare.Unit.INCH, 1.0);
+            bool compareCheck = lengthTwo.Compare(lengthOne);
+            Assert.IsTrue(compareCheck);
+        }
     }
 }
