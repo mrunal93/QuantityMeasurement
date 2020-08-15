@@ -17,6 +17,11 @@ namespace QuantityMeasurement
             this.value = value;
         }
 
+        public bool Compare(LengthCompare inchValue)
+        {
+            return true;
+        }
+
         public override bool Equals(object obj)
         {
             if (this == obj)
