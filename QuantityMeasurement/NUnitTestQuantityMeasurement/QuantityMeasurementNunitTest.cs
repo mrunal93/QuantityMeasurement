@@ -4,7 +4,7 @@ using QuantityMeasurement;
 namespace NUnitTestQuantityMeasurement
 {
     public class QuantityMeasurementNunitTest
-    { 
+    {
         [Test]
         public void GivenZeroFeetToNull_ThenCompareQuantity_ShouldReturnNotEquals()
         {
@@ -99,11 +99,20 @@ namespace NUnitTestQuantityMeasurement
         }
 
         [Test]
-        public void GivenOneFeetAndOneInch_ThenCompareQuantity_ShouldNotReturnTrue()
+        public void GivenOneFeetAndTwelveInch_ThenCompareQuantity_ShouldReturnTrue()
         {
             LengthCompare lengthOne = new LengthCompare(LengthCompare.Unit.FEET, 1.0);
             LengthCompare lengthTwo = new LengthCompare(LengthCompare.Unit.INCH, 12.0);
             bool compareCheck = lengthOne.Compare(lengthTwo);
+            Assert.IsTrue(compareCheck);
+        }
+
+        [Test]
+        public void GivenTwelveFeetAndOneInch_ThenCompareQuantity_ShouldReturnTrue()
+        {
+            LengthCompare lengthOne = new LengthCompare(LengthCompare.Unit.FEET, 12.0);
+            LengthCompare lengthTwo = new LengthCompare(LengthCompare.Unit.INCH, 1.0);
+            bool compareCheck = lengthTwo.Compare(lengthOne);
             Assert.IsTrue(compareCheck);
         }
     }

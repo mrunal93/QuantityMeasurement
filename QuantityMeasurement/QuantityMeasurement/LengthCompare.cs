@@ -11,7 +11,7 @@ namespace QuantityMeasurement
         private Unit unit;
         private double value;
         private double FeetToInch = 12.0;
-        private double InchToFeet = 12.0;
+        private double InchToFeet = 1/12.0;
 
         public LengthCompare(Unit unit,double value)
         {
@@ -19,7 +19,7 @@ namespace QuantityMeasurement
             this.value = value;
         }
 
-        public bool Compare(LengthCompare inchValue)
+        public  bool Compare(LengthCompare inchValue)
         {
             if (this.unit.Equals(inchValue.unit))
             {
@@ -33,7 +33,6 @@ namespace QuantityMeasurement
             {
                 return inchValue.value.CompareTo(this.value / InchToFeet) == 0;
             }
-
             return false;
         }
     }
