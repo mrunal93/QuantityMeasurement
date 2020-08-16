@@ -37,6 +37,10 @@ namespace QuantityMeasurement
             {
                 return inValue.value.CompareTo(this.value / CONVERTER_FEET_YARD) == 0;
             }
+            if(this.unit.Equals(Unit.YARD) && inValue.unit.Equals(Unit.FEET))
+            {
+                return inValue.value.CompareTo(this.value * CONVERTER_FEET_YARD) == 0;
+            }
             return false;
         }
 
