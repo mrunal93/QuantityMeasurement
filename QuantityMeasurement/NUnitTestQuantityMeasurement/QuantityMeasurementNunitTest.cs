@@ -176,5 +176,13 @@ namespace NUnitTestQuantityMeasurement
             Assert.IsFalse(compareCheck);
         }
 
+        [Test]
+        public void GivenOneYardAnd36Inch_ThenCompareQuantity_ShouldReturnTrue()
+        {
+            LengthCompare lengthOne = new LengthCompare(LengthCompare.Unit.INCH, 36.0);
+            LengthCompare lengthTwo = new LengthCompare(LengthCompare.Unit.YARD, 1.0);
+            bool compareCheck = lengthTwo.Compare(lengthOne);
+            Assert.IsFalse(compareCheck);
+        }
     }
 }
