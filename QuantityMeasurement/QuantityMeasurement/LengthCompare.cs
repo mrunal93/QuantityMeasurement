@@ -6,11 +6,12 @@ namespace QuantityMeasurement
 {
     public class LengthCompare
     {
-        public enum Unit { FEET,INCH}
+        public enum Unit { FEET,INCH,YARD}
 
         private Unit unit;
         private double value;
         private double CONVERTER_INCH_FEET = 12.0;
+        private double CONVERTER_FEET_YARD = 3.0;
 
         public LengthCompare(Unit unit,double value)
         {
@@ -18,19 +19,23 @@ namespace QuantityMeasurement
             this.value = value;
         }
 
-        public  bool Compare(LengthCompare inchValue)
+        public  bool Compare(LengthCompare inValue)
         {
-            if (this.unit.Equals(inchValue.unit))
+            if (this.unit.Equals(inValue.unit))
             {
-                return this.Equals(inchValue);
+                return this.Equals(inValue);
             }
-            if (this.unit.Equals(Unit.FEET) && inchValue.unit.Equals(Unit.INCH))
+            if (this.unit.Equals(Unit.FEET) && inValue.unit.Equals(Unit.INCH))
             {
-                return inchValue.value.CompareTo(this.value * CONVERTER_INCH_FEET) == 0;
+                return inValue.value.CompareTo(this.value * CONVERTER_INCH_FEET) == 0;
             }
-            if (this.unit.Equals(Unit.INCH) && inchValue.unit.Equals(Unit.FEET))
+            if (this.unit.Equals(Unit.INCH) && inValue.unit.Equals(Unit.FEET))
             {
-                return inchValue.value.CompareTo(this.value / CONVERTER_INCH_FEET) == 0;
+                return inValue.value.CompareTo(this.value / CONVERTER_INCH_FEET) == 0;
+            }
+            if (this.unit.Equals(Unit.FEET) && inValue.unit.Equals(Unit.YARD))
+            {
+                return inValue.value.CompareTo(this.value / CONVERTER_FEET_YARD) == 0;
             }
             return false;
         }
