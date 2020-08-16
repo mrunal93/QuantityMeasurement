@@ -151,10 +151,54 @@ namespace NUnitTestQuantityMeasurement
         }
 
         [Test]
-        public void GivenThreeFeetAndOneYard_ThenCompareQuantity_ShouldReturnTrue()
+        public void GivenThreeFeetAndOneYard_ThenCompareQuantity_ShouldReturnEquals()
         {
-            LengthCompare lengthOne = new LengthCompare(LengthCompare.Unit.FEET, 6.0);
-            LengthCompare lengthTwo = new LengthCompare(LengthCompare.Unit.YARD, 2.0);
+            LengthCompare lengthOne = new LengthCompare(LengthCompare.Unit.FEET, 3.0);
+            LengthCompare lengthTwo = new LengthCompare(LengthCompare.Unit.YARD, 1.0);
+            bool compareCheck = lengthOne.Compare(lengthTwo);
+            Assert.IsTrue(compareCheck);
+        }
+
+        [Test]
+        public void GivenOneFeetAndOneYard_ThenCompareQuantity_ShouldReturnFalse()
+        {
+            LengthCompare lengthOne = new LengthCompare(LengthCompare.Unit.FEET, 1.0);
+            LengthCompare lengthTwo = new LengthCompare(LengthCompare.Unit.YARD, 1.0);
+            bool compareCheck = lengthTwo.Compare(lengthOne);
+            Assert.IsFalse(compareCheck);
+        }
+        [Test]
+        public void GivenOneInchAndOneYard_ThenCompareQuantity_ShouldReturnFalse()
+        {
+            LengthCompare lengthOne = new LengthCompare(LengthCompare.Unit.INCH, 1.0);
+            LengthCompare lengthTwo = new LengthCompare(LengthCompare.Unit.YARD, 1.0);
+            bool compareCheck = lengthTwo.Compare(lengthOne);
+            Assert.IsFalse(compareCheck);
+        }
+
+        [Test]
+        public void GivenOneYardAnd36Inch_ThenCompareQuantity_ShouldReturnTrue()
+        {
+            LengthCompare lengthOne = new LengthCompare(LengthCompare.Unit.INCH, 36.0);
+            LengthCompare lengthTwo = new LengthCompare(LengthCompare.Unit.YARD, 1.0);
+            bool compareCheck = lengthTwo.Compare(lengthOne);
+            Assert.IsFalse(compareCheck);
+        }
+
+        [Test]
+        public void Given36InchAndOneYard_ThenCompareQuantity_ShouldReturnTrue()
+        {
+            LengthCompare lengthOne = new LengthCompare(LengthCompare.Unit.INCH, 36.0);
+            LengthCompare lengthTwo = new LengthCompare(LengthCompare.Unit.YARD, 1.0);
+            bool compareCheck = lengthOne.Compare(lengthTwo);
+            Assert.IsFalse(compareCheck);
+        }
+
+        [Test]
+        public void GivenOneYardAndThreeFeet_ThenCompareQuantity_ShouldReturnEquals()
+        {
+            LengthCompare lengthOne = new LengthCompare(LengthCompare.Unit.FEET, 3.0);
+            LengthCompare lengthTwo = new LengthCompare(LengthCompare.Unit.YARD, 1.0);
             bool compareCheck = lengthTwo.Compare(lengthOne);
             Assert.IsTrue(compareCheck);
         }
