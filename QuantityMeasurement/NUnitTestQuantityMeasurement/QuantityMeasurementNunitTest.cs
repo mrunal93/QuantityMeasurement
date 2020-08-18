@@ -180,7 +180,7 @@ namespace NUnitTestQuantityMeasurement
         {
             LengthCompare lengthOne = new LengthCompare(UnitConvertor.INCH, 36.0);
             LengthCompare lengthTwo = new LengthCompare(UnitConvertor.YARD, 1.0);
-            Assert.IsFalse(lengthOne.Equals(lengthTwo));
+            Assert.IsTrue(lengthOne.Equals(lengthTwo));
         }
 
         [Test]
@@ -205,6 +205,16 @@ namespace NUnitTestQuantityMeasurement
             LengthCompare lengthOne = new LengthCompare(UnitConvertor.INCH, 2.0);
             LengthCompare lengthTwo = new LengthCompare(UnitConvertor.INCH, 2.0);
             LengthCompare ExpectedInInch = new LengthCompare(UnitConvertor.INCH, 4.0);
+            LengthCompare additionOfTwoLength = lengthTwo.AddLength(lengthOne);
+            Assert.AreEqual(ExpectedInInch, additionOfTwoLength);
+        }
+
+        [Test]
+        public void Given2FeetAnd2Inch_ThenAddition_shouldReturnEquals()
+        {
+            LengthCompare lengthOne = new LengthCompare(UnitConvertor.FEET, 1.0);
+            LengthCompare lengthTwo = new LengthCompare(UnitConvertor.INCH, 2.0);
+            LengthCompare ExpectedInInch = new LengthCompare(UnitConvertor.INCH, 14.0);
             LengthCompare additionOfTwoLength = lengthTwo.AddLength(lengthOne);
             Assert.AreEqual(ExpectedInInch, additionOfTwoLength);
         }
