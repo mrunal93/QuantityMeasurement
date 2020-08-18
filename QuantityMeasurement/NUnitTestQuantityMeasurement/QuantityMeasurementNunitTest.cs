@@ -301,5 +301,13 @@ namespace NUnitTestQuantityMeasurement
             LengthCompare additionOfTwoLength = lengthTwo.AddLength(lengthOne);
             Assert.AreEqual(ExpectedInInch, additionOfTwoLength);
         }
+
+        [Test]
+        public void Given212FahrenheitAnd100Celsius_ThenCompare_shouldReturnEquals()
+        {
+            LengthCompare lengthOne = new LengthCompare(UnitConvertor.FAHRENHIET, 212.0);
+            LengthCompare lengthTwo = new LengthCompare(UnitConvertor.CELCIUS, 100.0);
+            Assert.AreEqual(lengthOne, lengthTwo);
+        }
     }
 }
