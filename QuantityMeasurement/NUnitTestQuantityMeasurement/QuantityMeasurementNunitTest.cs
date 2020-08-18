@@ -228,5 +228,15 @@ namespace NUnitTestQuantityMeasurement
             LengthCompare additionOfTwoLength = lengthTwo.AddLength(lengthOne);
             Assert.AreEqual(ExpectedInInch, additionOfTwoLength);
         }
+
+        [Test]
+        public void Given2InchtAnd24Centimeter_ThenAddition_shouldReturnEquals()
+        {
+            LengthCompare lengthOne = new LengthCompare(UnitConvertor.INCH, 2.0);
+            LengthCompare lengthTwo = new LengthCompare(UnitConvertor.CENTIMETER, 2.5);
+            LengthCompare ExpectedInInch = new LengthCompare(UnitConvertor.INCH, 3.0);
+            LengthCompare additionOfTwoLength = lengthTwo.AddLength(lengthOne);
+            Assert.AreEqual(ExpectedInInch, additionOfTwoLength);
+        }
     }
 }
