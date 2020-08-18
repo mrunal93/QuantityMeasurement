@@ -255,5 +255,25 @@ namespace NUnitTestQuantityMeasurement
             Assert.AreEqual(lengthTwo, lengthOne);
         }
 
+        [Test]
+        public void Given1GallontAndLitter_ThenAddition_shouldReturnEqualsWithvalue()
+        {
+            LengthCompare lengthOne = new LengthCompare(UnitConvertor.GALLON, 1.0);
+            LengthCompare lengthTwo = new LengthCompare(UnitConvertor.LITRE, 3.78);
+            LengthCompare ExpectedInInch = new LengthCompare(UnitConvertor.LITRE, 7.56);
+            LengthCompare additionOfTwoLength = lengthTwo.AddLength(lengthOne);
+            Assert.AreEqual(ExpectedInInch, additionOfTwoLength);
+        }
+
+        [Test]
+        public void Given1LitterAnd1000MilliLiter_ThenAddition_shouldReturnEqualsWithvalue2Litter()
+        {
+            LengthCompare lengthOne = new LengthCompare(UnitConvertor.LITRE, 1.0);
+            LengthCompare lengthTwo = new LengthCompare(UnitConvertor.MILILITRE, 1000.0);
+            LengthCompare ExpectedInInch = new LengthCompare(UnitConvertor.LITRE, 2);
+            LengthCompare additionOfTwoLength = lengthTwo.AddLength(lengthOne);
+            Assert.AreEqual(ExpectedInInch, additionOfTwoLength);
+        }
+
     }
 }
