@@ -9,10 +9,6 @@ namespace QuantityMeasurement
 
         public readonly UnitConvertor unit;
         public readonly double value;
-        //private Unit unit;
-        //private double value;
-        //private double CONVERTER_INCH_FEET = 12.0;
-        //private double CONVERTER_FEET_YARD = 3.0;
 
         public LengthCompare(UnitConvertor unit, double value)
         {
@@ -20,23 +16,10 @@ namespace QuantityMeasurement
             this.value = value;
         }
 
-        //public double ConvertTheValue(Unit unit, double value)
-        //{
-        //    if (unit.Equals(Unit.FEET))
-        //    {
-        //        return value * 12.0;
-        //    }
-        //    else if (unit.Equals(Unit.YARD))
-        //    {
-        //        return value * 36.0;
-        //    }
-        //    else if (unit.Equals(Unit.CENTIMETER))
-        //    {
-        //        return value / 2.5;
-        //    }
-
-        //    return value;
-        //}
+        public LengthCompare AddLength(LengthCompare that)
+        {
+            return new LengthCompare(UnitConvertor.INCH, this.unit.ConvertedValue(this.value) + that.unit.ConvertedValue(that.value));
+        }
 
         public override bool Equals(object obj)
         {
