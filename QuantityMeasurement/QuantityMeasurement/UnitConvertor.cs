@@ -16,6 +16,9 @@ namespace QuantityMeasurement
         public static readonly UnitConvertor KILOGRAM = new UnitConvertor(1.0);
         public static readonly UnitConvertor GRAM = new UnitConvertor(0.001);
         public static readonly UnitConvertor TONNE = new UnitConvertor(1000);
+        public readonly static UnitConvertor FAHRENHIET = new UnitConvertor(1.0);
+        public readonly static UnitConvertor CELCIUS = new UnitConvertor(2.12);
+
         private double unitBaseConvertor;
         
         private UnitConvertor(double unitBaseConvertor)
