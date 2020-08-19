@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace QuantityMeasurement
-{
+{/// <summary>
+/// This Class is Used To Compare and convert the Units
+/// </summary>
     public class UnitConvertor
     {
         public readonly static UnitConvertor FEET = new UnitConvertor(12.0);
@@ -19,13 +21,20 @@ namespace QuantityMeasurement
         public readonly static UnitConvertor FAHRENHIET = new UnitConvertor(1.0);
         public readonly static UnitConvertor CELCIUS = new UnitConvertor(2.12);
 
-        private double unitBaseConvertor;
-        
+        private  readonly double unitBaseConvertor;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UnitConvertor"/> class.
+        /// </summary>
+        /// <param name="unitBaseConvertor">The unit base convertor.</param>
         private UnitConvertor(double unitBaseConvertor)
         {
             this.unitBaseConvertor = unitBaseConvertor;
         }
-
+        /// <summary>
+        /// Converteds the value.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returnsIt Returns the converted Value ></returns>
         public double ConvertedValue(double value)
         {
             return this.unitBaseConvertor * value;
